@@ -18,7 +18,7 @@ VALUES
 (7, "MP1",4, 22.50),
 (8, "MP2", 4,24.50);
 
-INSERT INTO employees(id, firstName, lastName, role_id)
+INSERT INTO employee(id, first_name, last_name, roleId)
 VALUES
 (1, "Rikayla", "Johnson",1),
 (2, "Warrick", "Johnson",1),

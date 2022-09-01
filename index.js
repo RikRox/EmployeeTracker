@@ -92,14 +92,14 @@ function firstPrompt() {
             break;
   
           case "Add Role":
-            addRole();
+            addRole();l
             break;
 
         }
       });
   }
   
-  //View Employees/ READ all, SELECT * FROM
+
   function viewEmployee() {
 
   
@@ -115,9 +115,7 @@ function firstPrompt() {
     });
   
   }
-  
-  //"View Employees by Department" / READ by, SELECT * FROM
-  // Make a department array
+
   function viewEmployeeByDepartment() {
   
     var sql =  `SELECT * FROM employees`
@@ -131,7 +129,7 @@ function firstPrompt() {
       }));
   
       console.table(res);
-      console.log("Department view succeed!\n");
+
   
       promptDepartment(departmentChoices);
     });
@@ -159,7 +157,6 @@ function firstPrompt() {
           if (err) throw err;
   
           console.table("response ", res);
-          console.log(res.affectedRows + "Employees are viewed!\n");
   
           firstPrompt();
         });
@@ -182,7 +179,7 @@ function firstPrompt() {
       }));
   
       console.table(res);
-      console.log("RoleToInsert!");
+
   
       promptInsert(roleChoices);
     });
@@ -194,17 +191,17 @@ function firstPrompt() {
       .prompt([
         {
           type: "input",
-          name: "first_name",
+          name: "firstName",
           message: "What is the employee's first name?"
         },
         {
           type: "input",
-          name: "last_name",
+          name: "lastName",
           message: "What is the employee's last name?"
         },
         {
           type: "list",
-          name: "roleId",
+          name: "role_id",
           message: "What is the employee's role?",
           choices: roleChoices
         },
@@ -213,7 +210,7 @@ function firstPrompt() {
         console.log(answer);
   
         var sql = `INSERT INTO employee SET ?`
-        // when finished prompting, insert a new item into the db with that info
+        // insert a new item into the db with that info
         db.query(sql,
           {
             first_name: answer.first_name,
@@ -225,7 +222,7 @@ function firstPrompt() {
             if (err) throw err;
   
             console.table(res);
-            console.log(res.insertedRows + "Inserted successfully!\n");
+
   
             firstPrompt();
           });
@@ -274,7 +271,7 @@ function firstPrompt() {
           if (err) throw err;
   
           console.table(res);
-          console.log(res.affectedRows + "Deleted!\n");
+
   
           firstPrompt();
         });
@@ -288,7 +285,6 @@ function firstPrompt() {
   }
   
   function employeeArray() {
-    console.log("Updating an employee");
   
     var sql = `SELECT * FROM employees`
 
@@ -300,14 +296,13 @@ function firstPrompt() {
       }));
   
       console.table(res);
-      console.log("employeeArray To Update!\n")
+
   
       roleArray(employeeChoices);
     });
   }
   
   function roleArray(employeeChoices) {
-    console.log("Updating an role");
   
     var sql = `SELECT * FROM employees`
 
@@ -323,7 +318,7 @@ function firstPrompt() {
       }));
   
       console.table(res);
-      console.log("roleArray to Update!\n")
+
   
       promptEmployeeRole(employeeChoices, roleChoices);
     });
@@ -336,7 +331,7 @@ function firstPrompt() {
         {
           type: "list",
           name: "employeeId",
-          message: "Which employee do you want to set with the role?",
+          message: "On which employee do you want to update the role?",
           choices: employeeChoices
         },
         {
@@ -358,7 +353,7 @@ function firstPrompt() {
             if (err) throw err;
   
             console.table(res);
-            console.log(res.affectedRows + "Updated successfully!");
+    
   
             firstPrompt();
           });
